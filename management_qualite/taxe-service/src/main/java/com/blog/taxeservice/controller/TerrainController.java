@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequestMapping(path = "/api/main/terrain")
 @RequiredArgsConstructor
@@ -32,7 +31,7 @@ public class TerrainController {
         return terrainService.findById(id);
     }
 
-    @DeleteMapping("/daleteById/{id}")
+    @DeleteMapping("/deleteById/{id}")
     public void deleteById(@PathVariable Long id) {
         terrainService.deleteById(id);
     }

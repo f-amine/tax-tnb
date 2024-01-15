@@ -9,13 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="config-server" />
         <module name="auth-service" />
-        <module name="blog-service" />
         <module name="gateway" />
         <module name="discovery" />
         <module name="taxe-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="blog-service" target="17" />
       <module name="security" target="17" />
     </bytecodeTargetLevel>
   </component>

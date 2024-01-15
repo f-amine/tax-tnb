@@ -34,7 +34,7 @@ public class ProprietaireService {
     }
 
     public Proprietaire findByCIN(String CIN) {
-        return proprietaireRepository.findByCIN(CIN);
+        return proprietaireRepository.findByCin(CIN);
     }
 
     public ResponseEntity<Proprietaire> updateProprietaire(Long id, Proprietaire proprietaire) {
@@ -44,7 +44,7 @@ public class ProprietaireService {
             Proprietaire existingProprietaire = optionalProprietaire.get();
             existingProprietaire.setNom(proprietaire.getNom());
             existingProprietaire.setPrenom(proprietaire.getPrenom());
-            existingProprietaire.setCIN(proprietaire.getCIN());
+            existingProprietaire.setCin(proprietaire.getCin());
 
             Proprietaire updateProprietaire = proprietaireRepository.save(existingProprietaire);
             return ResponseEntity.ok(updateProprietaire);

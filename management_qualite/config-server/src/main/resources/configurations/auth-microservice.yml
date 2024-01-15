@@ -16,7 +16,7 @@ spring:
     password: root
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
@@ -31,7 +31,8 @@ application:
       expirationTime: 86400000
       refresh-token:
         expirationTime: 604800000
-
+  config:
+    prop-url: http://localhost:8222/api/main
 management:
   tracing:
     sampling:

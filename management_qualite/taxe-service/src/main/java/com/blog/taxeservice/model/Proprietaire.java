@@ -17,9 +17,6 @@ public class Proprietaire  {
 
     private String nom;
     private String prenom;
-    private String CIN;
-
-    private String password;
-
+    private String cin;
     private Long propid;
 }

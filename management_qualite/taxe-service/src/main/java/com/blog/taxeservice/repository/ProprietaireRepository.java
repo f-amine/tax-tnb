@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProprietaireRepository extends JpaRepository<Proprietaire,Long> {
-    Proprietaire findByCIN(String CIN);
-    Boolean existsByCIN(String CIN);
+    Proprietaire findByCin(String CIN);
+    Boolean existsByCin(String CIN);
 }

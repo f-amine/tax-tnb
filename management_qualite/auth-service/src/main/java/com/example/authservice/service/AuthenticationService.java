@@ -1,5 +1,6 @@
 package com.example.authservice.service;
 
+import com.example.authservice.client.PropClient;
 import com.example.authservice.config.JwtService;
 import com.example.authservice.dto.AuthenticationResponse;
 import com.example.authservice.dto.LoginRequest;
@@ -44,11 +45,13 @@ public class AuthenticationService {
     private final TokenRepository tokenRepository;
     private final UserDetailsService userDetailsService;
     private final CloudinaryService cloudinaryService;
+    private final PropClient propClient;
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .email(request.getEmail())
+                .cin(request.getCin())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
@@ -56,6 +59,13 @@ public class AuthenticationService {
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         saveUserToken(savedUser, jwtToken);
+        var proprietaire = com.example.authservice.dto.Proprietaire.builder()
+                .nom(request.getFirstname())
+                .prenom(request.getLastname())
+                .cin(request.getCin())
+                .propid(savedUser.getId())
+                .build();
+        propClient.saveProprietaire(proprietaire);
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
